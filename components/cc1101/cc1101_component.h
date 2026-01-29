@@ -7,18 +7,20 @@
 namespace esphome {
 namespace cc1101 {
 
-class CC1101Sensor : public esphome::sensor::Sensor, public esphome::Component {
+class CC1101Sensor : public sensor::Sensor, public Component {
  public:
-  void set_spi_device(esphome::spi::SPIClient *device) { this->spi_device_ = device; }
+  void set_spi_device(spi::SPIDevice *dev) { this->spi_dev_ = dev; }
 
   void setup() override {
+    ESP_LOGI("cc1101", "CC1101 setup() called");
   }
 
   void loop() override {
+    ESP_LOGV("cc1101", "CC1101 loop() running");
   }
 
  protected:
-  esphome::spi::SPIClient *spi_device_{nullptr};
+  spi::SPIDevice *spi_dev_{nullptr};
 };
 
 }  // namespace cc1101
