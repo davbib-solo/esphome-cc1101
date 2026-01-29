@@ -6,6 +6,8 @@ from esphome.components import spi
 cc1101_ns = cg.esphome_ns.namespace("cc1101")
 CC1101Sensor = cc1101_ns.class_("CC1101Sensor", sensor.Sensor, cg.Component)
 
+cg.add(cg.include("cc1101_component.h"))
+
 CONFIG_SCHEMA = sensor.sensor_schema().extend(
     {
         cv.GenerateID(): cv.declare_id(CC1101Sensor),
